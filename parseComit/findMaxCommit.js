@@ -1,7 +1,7 @@
 const NUMBERS = ['zero','one','two','three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
 
 const findCommit = require('./findCommit');
-const sampleData = require('./sampleData.js')
+const sampleData = require('../sampleData.js')
 
 const findMaxCommit = (data, start = 9) => {
 
