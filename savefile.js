@@ -3,7 +3,7 @@ const path = require('path');
 
 const findMaxCommit = require('./findMaxCommit.js')
 const getCommitHistory = require('./getCommit');
-const COHORT = 'hrsf129'
+const COHORT = 'hrsf131'
 
 const baseUrl = `https://api.github.com/repos/hackreactor/${COHORT}-technical-assessment-solutions/commits?sha=`
 
