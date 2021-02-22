@@ -10,7 +10,7 @@ const findMaxCommit = (data, start = 12) => {
       return i.toString();
     }
   }
-  return 0;
+  return -1;
 }
 
 // console.log(findMaxCommit(sampleData))
