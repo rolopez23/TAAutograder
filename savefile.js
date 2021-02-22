@@ -1,13 +1,13 @@
 const fs = require('fs');
 const path = require('path');
 
-const findMaxCommit = require('./parseComit/findMaxCommit.js')
+const findMaxCommit = require('./parseCommit/findMaxCommit.js')
 const getCommitHistory = require('./getCommit');
 const stringToMatrix = require('./helpers/stringToMatrix.js')
+const constants = require('./cohortVariables.js')
 
-const COHORT = 'hrsf131'
-const baseUrl = `https://api.github.com/repos/hackreactor/${COHORT}-technical-assessment-solutions/commits?sha=`
-const filePath = path.join(__dirname, 'csv', 'cohort.csv');
+const baseUrl = `https://api.github.com/repos/hackreactor/${constants.cohort}-technical-assessment-solutions/commits?sha=`
+const filePath = path.join(__dirname, 'csv', constants.inputFile);
 
 //Read the CSV and save it to a file
 fs.readFile(filePath, 'utf-8', (err, data) => {
@@ -15,10 +15,16 @@ fs.readFile(filePath, 'utf-8', (err, data) => {
     console.log(err)
   } else {
     let studentMatrix = stringToMatrix(data).slice(1);
-    const gitHubRequests = studentMatrix.map(student => getCommitHistory(baseUrl + student[1]))
+    console.log(studentMatrix)
+
+    const gitHubRequests = studentMatrix.map(student => {
+      const url = baseUrl + student[1];
+      return getCommitHistory(url)
+    })
 
     Promise.all(gitHubRequests)
       .then((responses) => responses.map((response) => {
+        // console.log(response.data)
         return findMaxCommit(response.data)
       }))
       .then(furthestSteps => furthestSteps.map((step, index) => [...studentMatrix[index], step]))
@@ -28,7 +34,7 @@ fs.readFile(filePath, 'utf-8', (err, data) => {
           studentMatrix[i] = studentMatrix[i].join(',');
         }
         const text = studentMatrix.join('\n');
-        fs.writeFile('csv/taSteps.csv', text, (err) => {
+        fs.writeFile(path.join(__dirname, `csv/${constants.outputFile}`), text, (err) => {
           if (err) {
             console.log('error')
           } else {
@@ -36,7 +42,7 @@ fs.readFile(filePath, 'utf-8', (err, data) => {
           }
         })
       })
-      .catch(console.log)
+      .catch(() => console.log('error'))
   }
 })
 
