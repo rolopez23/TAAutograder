@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const findMaxCommit = require('./parseComit/findMaxCommit.js')
+const findMaxCommit = require('./parseCommit/findMaxCommit.js')
 const getCommitHistory = require('./getCommit');
 const stringToMatrix = require('./helpers/stringToMatrix.js')
 const constants = require('./cohortVariables.js')
