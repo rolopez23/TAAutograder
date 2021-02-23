@@ -1,7 +1,7 @@
 //Update to change the cohort
 
 module.exports = {
-  cohort: 'hrsf131',
+  cohort: 'hr-sfo133',
   inputFile: 'cohort.csv',
   outputFile: 'taResults.csv',
 }
