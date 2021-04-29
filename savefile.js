@@ -1,10 +1,12 @@
 const fs = require('fs');
 const path = require('path');
 
-const findMaxCommit = require('./parseCommit/findMaxCommit.js')
+const findAllCommits = require('./parseCommit/findAllCommits.js');
 const getCommitHistory = require('./getCommit');
-const stringToMatrix = require('./helpers/stringToMatrix.js')
-const constants = require('./cohortVariables.js')
+
+const stringToMatrix = require('./helpers/stringToMatrix.js');
+const getMaxLevel = require('./helpers/getMaxLevel.js')
+const constants = require('./cohortVariables.js');
 
 const baseUrl = `https://api.github.com/repos/hackreactor/${constants.cohort}-technical-assessment-solutions/commits?sha=`
 const filePath = path.join(__dirname, 'csv', constants.inputFile);
@@ -15,7 +17,6 @@ fs.readFile(filePath, 'utf-8', (err, data) => {
     console.log(err)
   } else {
     let studentMatrix = stringToMatrix(data).slice(1);
-    console.log(studentMatrix)
 
     const gitHubRequests = studentMatrix.map(student => {
       const url = baseUrl + student[1];
@@ -24,10 +25,9 @@ fs.readFile(filePath, 'utf-8', (err, data) => {
 
     Promise.all(gitHubRequests)
       .then((responses) => responses.map((response) => {
-        // console.log(response.data)
-        return findMaxCommit(response.data)
+        return findAllCommits(response.data)
       }))
-      .then(furthestSteps => furthestSteps.map((step, index) => [...studentMatrix[index], step]))
+      .then(allCommits => allCommits.map((commits, index) => [...studentMatrix[index], getMaxLevel(commits), JSON.stringify(commits)]))
       .then((studentMatrix) => {
         studentMatrix = [['Name', 'GitHub Handle', 'TA complete to']].concat(studentMatrix);
         for (let i = 0; i < studentMatrix.length; i++) {

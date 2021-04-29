@@ -16,12 +16,15 @@ const stepComplete = require('./stepComplete.js')
 
 
 
-const findCommit = (commitHistory, step) => {
+const findCommit = (commitHistory, step, hashes) => {
+  hashes = Object.assign({}, hashes)
   for (let i = 0; i < commitHistory.length; i++) {
-    let message = commitHistory[i].commit.message;
+    const entry = commitHistory[i]
+    message = entry.commit.message;
+    sha = entry.sha;
     message = message.toLowerCase();
     if (stepComplete(message, step)) {
-      return true;
+      return sha;
     }
  
   }
