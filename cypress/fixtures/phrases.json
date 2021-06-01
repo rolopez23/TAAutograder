@@ -2,14 +2,14 @@
   {
       "id": 1,
       "kor": "안녕하새요",
-      "eng": "Hello",
+      "eng": "Hello World",
       "rom": "an-nyeong ha-se-yo",
       "status": "Not yet"
   },
   {
       "id": 2,
       "kor": "감사합니다",
-      "eng": "Thank you",
+      "eng": "Thank you Student",
       "rom": "gam-sa-hab-ni-da",
       "status": "Not yet"
   },

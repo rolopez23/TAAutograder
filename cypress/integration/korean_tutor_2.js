@@ -1,44 +1,41 @@
+
+
 describe('Stage 1 still renders', ()=> {
+  beforeEach(()=> {
+    cy.visit('/')
+    cy.wait(500)
+  })
+
   it('App renders', ()=> {
     cy.visit('/')
   })
 })
 
 describe('Stage 2 complete', ()=> {
-  it('Practice advances on all clicks', async ()=> {
-    cy.visit('/')
+  it('Practice advances on all clicks', ()=> {
+    // cy.fixture('./fixtures/phrases.json').as('phrases.json');
+
     cy.contains('Practice').click()
+    let text = null;
+    cy.get("div.card-kor").should($korean=> {
+      text = $korean.text()
+    })
+    //advance
+    cy.contains('Not yet').click()
+    cy.get("div.card-kor").should($korean => {
+      expect($korean.text()).to.not.equal(text);
+      text = $korean.text()
+    })
+    cy.contains('Almost').click()
+    cy.get("div.card-kor").should($korean => {
+      expect($korean.text()).to.not.equal(text);
+      text = $korean.text()
+    })
 
-    // let phrase = cy.get("div.card-kor").text()
-    // cy.contains('Not yet').click()
-    // let newCard = cy.get("div.card-kor");
-    // expect(newCard.text()).to.not.equal(phrase);
-
-    // cy.get("div.card-kor")
-    //   .then(($korean)=> {
-    //     phrase = $korean.text();
-    //     console.log(phrase)
-    //     return phrase;
-    //   })
-    //   .then(()=> {
-    //     cy.contains('Not yet').click();
-    //     return cy.get("div.card-kor")
-    //   })
-    //   .then((newCard)=> {
-    //     expect(newCard.text()).to.not.equal(phrase)
-    //     phrase = newCard.text()
-    //     cy.contains('Almost').click();
-    //     return cy.get("div.card-kor")
-    //   })
-    //   .then((newCard)=> {
-    //     expect(newCard.text()).to.not.equal(phrase)
-    //     phrase = newCard.text()
-    //     cy.contains('Got it').click();
-    //     return cy.get("div.card-eng")
-    //   })
-    //   .then((newCard)=> {
-    //     expect(true).to.not.equal(true)
-    //   })
+    cy.contains('Got it').click()
+    cy.get("div.card-kor").should($korean => {
+      expect($korean.text()).to.not.equal(text);
+    })
   })
 })
 

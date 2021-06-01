@@ -1,17 +1,35 @@
-describe('Stage 3 report', ()=> {
-  it('App renders', ()=> {
-    cy.visit('/')
-  })
-
-  it('Finds Reveal Translation', async ()=> {
+describe('Stage 3 report', () => {
+  beforeEach(() => {
     cy.visit('/')
     cy.wait(500)
-    .then(()=> {
-      cy.contains('Practice').click()
-      expect(cy.contains('Reveal').toBe(true))
-    }) 
-
-
   })
 
+  it('App renders', () => {
+    cy.visit('/')
+  })
+
+  it('Finds Reveal Translation as default', () => {
+
+    cy.contains('Practice').click()
+    cy.contains('reveal', {matchCase: false})
+  })
+
+  it('Toggles translation on click', () => {
+    cy.contains('Practice').click()
+    cy.contains('reveal', {matchCase: false}).click()
+    cy.contains('Hello')
+    cy.contains('Hello', {matchCase: false}).click()
+    cy.contains('reveal', {matchCase: false})
+  })
+
+  it('Toggles translation on multiple elements click', () => {
+    cy.contains('Practice').click()
+    cy.contains('reveal', {matchCase: false}).click()
+    cy.contains('Hello')
+    cy.contains('Hello', {matchCase: false}).click()
+    cy.contains('reveal', {matchCase: false})
+  })
+
+
 })
+
