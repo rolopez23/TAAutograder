@@ -1,7 +1,7 @@
 describe('Stage 3 report', () => {
   beforeEach(() => {
     cy.visit('/')
-    cy.wait(500)
+    cy.wait(1500)
   })
 
   it('App renders', () => {

@@ -1,10 +1,7 @@
 describe('Stage 4 report', () => {
-  let text1 = null;
-  let text2 = null;
-
   beforeEach(() => {
     cy.visit('/')
-    cy.wait(500)
+    cy.wait(1500)
   })
 
   it('App renders', () => {
@@ -15,14 +12,7 @@ describe('Stage 4 report', () => {
 
     cy.contains('Practice').click();
     cy.get("div.card-eng").click();
-    cy.get("div.card-eng").should($english => {
-      text1 = $english.text()
-    })
     cy.contains('Got it').click()
-    cy.get("div.card-eng").click(); 
-    cy.get("div.card-eng").should($english => {
-      text2 = $english.text()
-    })
     cy.contains('Almost').click()
     cy.contains('Phrase List').click()
     const element1 = cy.get('div.phrase-row').contains('Hello').parent()
