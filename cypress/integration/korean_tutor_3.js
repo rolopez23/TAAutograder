@@ -17,17 +17,27 @@ describe('Stage 3 report', () => {
   it('Toggles translation on click', () => {
     cy.contains('Practice').click()
     cy.contains('reveal', {matchCase: false}).click()
-    cy.contains('Hello')
+    cy.contains('Hello').should('exist')
     cy.contains('Hello', {matchCase: false}).click()
-    cy.contains('reveal', {matchCase: false})
+    cy.contains('reveal', {matchCase: false}).should('exist')
   })
 
   it('Toggles translation on multiple elements click', () => {
     cy.contains('Practice').click()
+    cy.contains('Almost').click()
     cy.contains('reveal', {matchCase: false}).click()
-    cy.contains('Hello')
-    cy.contains('Hello', {matchCase: false}).click()
-    cy.contains('reveal', {matchCase: false})
+    cy.contains('Thank').should('exist')
+    cy.contains('Thank', {matchCase: false}).click()
+    cy.contains('reveal', {matchCase: false}).should('exist')
+  })
+
+  it('Hides the next element as default', () => {
+    cy.contains('Practice').click()
+    cy.contains('reveal', {matchCase: false}).click()
+    cy.contains('Almost').click()
+    cy.contains('Reveal').should('exist')
+
+
   })
 
 
