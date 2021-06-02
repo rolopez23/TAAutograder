@@ -21,6 +21,7 @@ const writeStudent = (student, callback) => {
       return
     }
     createReport((err, report)=> {
+      console.log(report)
       if (err) {
         console.log('Failed to create Report', err);
         callback(err);
