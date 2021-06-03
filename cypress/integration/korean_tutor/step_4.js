@@ -15,7 +15,7 @@ describe('Stage 4 report', () => {
   })
 
   it('Updates phrase list', ()=> {
-
+    //I should be able to capture the text and scope it TODO
     cy.contains('Practice').click();
     cy.contains('Got it').click()
     cy.contains('Almost').click()
