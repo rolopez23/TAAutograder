@@ -1,4 +1,6 @@
+const process = require('process')
 const helpers = require('./helpers')
+console.log(process.argv)
 //student is an object 
 /*
  *  student = {
@@ -21,7 +23,7 @@ const writeStudent = (student, callback) => {
       return
     }
     createReport((err, report)=> {
-      console.log(report)
+    
       if (err) {
         console.log('Failed to create Report', err);
         callback(err);
@@ -32,22 +34,22 @@ const writeStudent = (student, callback) => {
             callback(err)
             return;
           }
-          callback(studentDirectory);
+          callback(null, studentDirectory);
         })
       }
     })
   })
 }
 
-writeStudent({name: 'Rob', github:'rolopez23'}, (err, dir)=> {
+writeStudent({name: process.argv[2], github: process.argv[3]}, (err, dir)=> {
   if(err) {
     console.log(err);
     return;
   }
-  console.log(helpers)
+
   helpers.clearReports()
     .then(()=>{
-      console.log('reports cleared')
+      console.log('reports cleared', dir)
       return helpers.moveVideos(dir)
     })
     .then(()=>{

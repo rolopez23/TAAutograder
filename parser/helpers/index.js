@@ -2,7 +2,7 @@ const path = require('path');
 const fs = require('fs');
 
 const REPORT_DIRECTORY = path.join(__dirname,  '../../cypress/results/json');
-const VIDEO_DIRECTORY = path.join(__dirname,  '../../cypress/videos');
+const VIDEO_DIRECTORY = path.join(__dirname,  '../../cypress/videos/korean_tutor');
 
 console.log(REPORT_DIRECTORY)
 const readdirPromise = (path) => {
