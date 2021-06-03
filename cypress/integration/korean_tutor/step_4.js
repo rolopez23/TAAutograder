@@ -1,17 +1,22 @@
 describe('Stage 4 report', () => {
   beforeEach(() => {
+    cy.intercept('get','/api/phrases').as('getPhrases');
+    cy.intercept('patch','/api/phrases').as('updatePhrase');
     cy.visit('/')
-    cy.wait(1500)
+    cy.wait('@getPhrases')
   })
 
-  it('App renders', () => {
-    cy.visit('/')
+  it('Sends a patch request on click', ()=> {
+    cy.contains('Practice').click();
+    cy.contains('Not yet').click();
+    cy.contains('Not yet').click();
+    cy.contains('Not yet').click();
+    cy.get('@updatePhrase').should('exist')
   })
 
   it('Updates phrase list', ()=> {
 
     cy.contains('Practice').click();
-    cy.get("div.card-eng").click();
     cy.contains('Got it').click()
     cy.contains('Almost').click()
     cy.contains('Phrase List').click()
@@ -23,10 +28,8 @@ describe('Stage 4 report', () => {
 
   it('The changes persist', ()=> {
     const element1 = cy.get('div.phrase-row').contains('Hello').parent()
-    console.log(element1)
     element1.contains('Got it').should('exist');
     const element2 = cy.get('div.phrase-row').contains('Thank you').parent()
-    console.log(element2)
     element2.contains('Almost').should('exist');
   })
 })

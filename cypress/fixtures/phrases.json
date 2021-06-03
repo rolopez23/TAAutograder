@@ -1,72 +1,25 @@
-[
-  {
+{
+  "body": [
+    {
       "id": 1,
-      "kor": "안녕하새요",
-      "eng": "Hello World",
-      "rom": "an-nyeong ha-se-yo",
+      "kor": "korean1",
+      "eng": "phrase1",
+      "rom": "rom1",
       "status": "Not yet"
-  },
-  {
+    },
+    {
       "id": 2,
-      "kor": "감사합니다",
-      "eng": "Thank you Student",
-      "rom": "gam-sa-hab-ni-da",
-      "status": "Not yet"
-  },
-  {
+      "kor": "k2",
+      "eng": "e2",
+      "rom": "r2",
+      "status": "Got it"
+    }, 
+    {
       "id": 3,
-      "kor": "잠시만요",
-      "eng": "Wait a moment/Excuse me",
-      "rom": "jam-si-man-yo",
-      "status": "Not yet"
-  },
-  {
-      "id": 4,
-      "kor": "미안해요",
-      "eng": "I'm sorry.",
-      "rom": "mi-an-he-yo",
-      "status": "Not yet"
-  },
-  {
-      "id": 5,
-      "kor": "이거 얼마예요?",
-      "eng": "How much does this cost?",
-      "rom": "i-geo eol-ma-ye-yo",
-      "status": "Not yet"
-  },
-  {
-      "id": 6,
-      "kor": "공핳 가주새요",
-      "eng": "Please take me to the airport.",
-      "rom": "gong-hang ga-ju-se-yo",
-      "status": "Not yet"
-  },
-  {
-      "id": 7,
-      "kor": "잘 먹겠습니다",
-      "eng": "I will eat well!",
-      "rom": "jal meok-ge-sseum-ni-da",
-      "status": "Not yet"
-  },
-  {
-      "id": 8,
-      "kor": "김밥 주세요",
-      "eng": "Please give me Kimbap.",
-      "rom": "gim-bap ju-se-yo",
-      "status": "Not yet"
-  },
-  {
-      "id": 9,
-      "kor": "맛있어요",
-      "eng": "It's delicious!",
-      "rom": "ma-si-sseo-yo",
-      "status": "Not yet"
-  },
-  {
-      "id": 10,
-      "kor": "헤크리엑터 대박이예요!",
-      "eng": "Hack Reactor is amazing!",
-      "rom": "Hack Reactor dae-bak-i-ye-yo",
-      "status": "Not yet"
-  }
-]
+      "kor": "k3",
+      "eng": "e3",
+      "rom": "r3",
+      "status": "Almost"
+    }
+  ]
+}
