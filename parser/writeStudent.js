@@ -14,8 +14,8 @@ const createReport = require('./combineReports');
 
 const DIRECTORY = path.join(__dirname, '../students');
 
-const writeStudent = (student, callback) => {
-  const studentDirectory = path.join(DIRECTORY, student.name)
+const writeStudent = (github, callback) => {
+  const studentDirectory = path.join(DIRECTORY, github)
   fs.mkdir(studentDirectory, (err)=> {
     if(err) {
       console.log('Failed to build directory', err);

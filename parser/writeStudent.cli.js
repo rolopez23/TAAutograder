@@ -2,7 +2,7 @@ const process = require('process');
 const writeStudent = require('./writeStudent');
 const helpers = require('./helpers')
 
-writeStudent({name: process.argv[2], github: process.argv[3]}, (err, dir)=> {
+writeStudent(process.argv[2], (err, dir)=> {
   if(err) {
     console.log(err);
     return;

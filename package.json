@@ -4,7 +4,8 @@
   "main": "index.js",
   "scripts": {
     "start": "cypress open",
-    "korean-tutor": "cypress run korean_tutor"
+    "korean-tutor": "cypress run korean_tutor",
+    "blogmodo": "cypress run blogmodo"
   },
   "keywords": [],
   "author": "",

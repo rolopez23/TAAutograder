@@ -16,19 +16,19 @@ describe('Stage 3 report', () => {
 
   it('Toggles translation on click', () => {
     cy.contains('Practice').click()
+    cy.contains('reveal', {matchCase: false}).should('exist')
     cy.get('div.card-eng').click()
     cy.contains('rom1').should('exist');
     cy.get('div.card-eng').click()
     cy.contains('reveal', {matchCase: false}).should('exist')
   })
 
-  it('Toggles translation on multiple elements click', () => {
+  it('Resets to reveal', () => {
     cy.contains('Practice').click()
-    cy.contains('Not yet',{matchCase: false} ).click()
     cy.contains('reveal', {matchCase: false}).should('exist')
     cy.get('div.card-eng').click()
-    cy.contains('r2').should('exist')
-    cy.get('div.card-eng').click()
+    cy.contains('Phrase List').click()
+    cy.contains('Practice').click()
     cy.contains('reveal', {matchCase: false}).should('exist')
   })
 })

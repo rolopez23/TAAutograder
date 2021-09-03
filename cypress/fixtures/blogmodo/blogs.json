@@ -1,0 +1,26 @@
+{
+  "body": [
+    {
+      "views": 100,
+      "_id": "1",
+      "title": "Test1",
+      "author": "Rob Lopez",
+      "imageUrl": "https://source.unsplash.com/1600x900/?cat",
+      "createdAt": "2020-11-14T05:57:26.037Z",
+      "body": "P1\n\nP2\n\nP3\n",
+      "updatedAt": "2021-09-02T07:04:53.263Z",
+      "__v": 0
+    },
+    {
+      "views": 100,
+      "_id": "2",
+      "title": "Test2",
+      "author": "Claire Chen",
+      "imageUrl": "https://source.unsplash.com/1600x900/?cat",
+      "createdAt": "2019-11-14T05:57:26.037Z",
+      "body": "P1C\n\nP2C\n\nP3C\n",
+      "updatedAt": "2021-09-02T07:04:53.263Z",
+      "__v": 0
+    }
+  ]
+}

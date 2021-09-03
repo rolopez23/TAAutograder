@@ -1,23 +1,25 @@
 describe('Stage 4 report', () => {
   beforeEach(() => {
     cy.intercept('get','/api/phrases').as('getPhrases');
-    cy.intercept('patch','/api/phrases').as('updatePhrase');
+
     cy.visit('/')
     cy.wait('@getPhrases')
   })
 
   it('Sends a patch request on click', ()=> {
+    cy.intercept('patch','/api/phrases/*').as('updatePhrases');
     cy.contains('Practice').click();
     cy.contains('Not yet').click();
     cy.contains('Not yet').click();
     cy.contains('Not yet').click();
-    cy.get('@updatePhrase').should('exist')
+    cy.get('@updatePhrases').should('exist')
   })
 
   it('Updates phrase list', ()=> {
     //I should be able to capture the text and scope it TODO
     cy.contains('Practice').click();
     cy.contains('Got it').click()
+    cy.contains('Almost').click()
     cy.contains('Almost').click()
     cy.contains('Phrase List').click()
     const element1 = cy.get('div.phrase-row').contains('Hello').parent()
