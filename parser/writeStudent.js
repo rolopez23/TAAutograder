@@ -16,6 +16,7 @@ const DIRECTORY = path.join(__dirname, '../students');
 
 const writeStudent = (github, callback) => {
   const studentDirectory = path.join(DIRECTORY, github)
+  console.log(studentDirectory, 'making')
   fs.mkdir(studentDirectory, (err)=> {
     if(err) {
       console.log('Failed to build directory', err);
@@ -41,3 +42,4 @@ const writeStudent = (github, callback) => {
 }
 
 module.exports = writeStudent;
+

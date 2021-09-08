@@ -2,7 +2,7 @@ const path = require('path');
 const fs = require('fs');
 
 const REPORT_DIRECTORY = path.join(__dirname,  '../../cypress/results/json');
-const VIDEO_DIRECTORY = path.join(__dirname,  '../../cypress/videos/korean_tutor');
+const VIDEO_DIRECTORY = path.join(__dirname,  '../../cypress/videos/blogmodo');
 
 
 const readdirPromise = (path) => {
@@ -41,7 +41,7 @@ module.exports = {
         return Promise.all(files.map(file =>{
           const filePath = path.join(VIDEO_DIRECTORY, file)
           const newFilePath = path.join(studentDirectory, file)
-          console.log('Moving', filePath, newFilePath)
+          // console.log('Moving', filePath, newFilePath)
           return new Promise ((resolve, reject)=> {
             fs.rename(filePath, newFilePath, (err)=> {
               if(err) {
@@ -55,4 +55,4 @@ module.exports = {
       })
    }
 }
-module.exports.moveVideos('/Users/robertlopez/mini-projects/cypress/students/rob')
+

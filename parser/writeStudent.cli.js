@@ -7,14 +7,15 @@ writeStudent(process.argv[2], (err, dir)=> {
     console.log(err);
     return;
   }
-
   helpers.clearReports()
     .then(()=>{
       console.log('reports cleared', dir)
       return helpers.moveVideos(dir)
+
     })
     .then(()=>{
       console.log('videos moved')
       return
     })
 })
+

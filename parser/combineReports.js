@@ -18,3 +18,4 @@ const combineReport = (callback) => {
 }
 
 module.exports = combineReport;
+

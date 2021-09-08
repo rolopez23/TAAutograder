@@ -5,7 +5,7 @@
   "scripts": {
     "start": "cypress open",
     "korean-tutor": "cypress run korean_tutor",
-    "blogmodo": "cypress run blogmodo"
+    "blogmodo": "cypress run /Users/robertlopez/projects/TAautograder/TAtester/cypress/integration/blogmodo/**"
   },
   "keywords": [],
   "author": "",

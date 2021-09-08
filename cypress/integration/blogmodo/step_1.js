@@ -15,16 +15,6 @@ describe('Stage 1 TA Report', () => {
    cy.get('@getBlogs').should('exist');
   })
 
-  it('Renders intercepted list of data', () => {
-    cy.intercept('get', '/api/blogs', blogs).as("stubbedGetBlogs");
-    cy.visit('/');
-    cy.wait('@stubbedGetBlogs');
-    cy.contains("Rob Lopez").should('exist');
-    cy.contains("Claire Chen").should('exist');
-    cy.contains("Test1").should('exist');
-    cy.contains("Test2").should('exist');
-    cy.contains("P2C").should('exist');
-  })
 
   it('Renders list of data from database', () => {
     cy.contains("Tae Sung Kim").should('exist');
